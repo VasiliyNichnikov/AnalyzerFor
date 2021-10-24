@@ -86,7 +86,7 @@ class Lexer:
             self.__info = self.__info[1:]
         self.__state = States.H
         if value in KEYWORDS:
-            return Token("KEYWORD", value)
+            return Token(f"KEYWORD_{value.upper()}", value)
         return Token("ID", value)
 
     def __check_state_nm(self) -> Token | None:
@@ -119,7 +119,7 @@ class Lexer:
         self.__info = self.__info[1:]
         if value in SEPARATORS:
             self.__state = States.H
-            return Token("DLM", value)
+            return Token(NAME[value], value)
         self.__description_error = f"(DLM) The symbol ({value}) is not a separator."
         self.__state = States.ERR
         return None
