@@ -1,6 +1,6 @@
 from typing import List
 
-from _token import Token
+from lexer_token import Token
 from basic_parameters import *
 from states import States
 
@@ -91,7 +91,7 @@ class Lexer:
 
     def __check_state_nm(self) -> Token | None:
         value: str = ""
-        while self.__info[0] in NUMBERS + ['-', '+', '.']:
+        while self.__info[0] in NUMBERS + ['-', '+', '.', 'e']:
             value += self.__info[0]
             self.__info = self.__info[1:]
 
